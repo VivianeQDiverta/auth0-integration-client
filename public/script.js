@@ -18,10 +18,4 @@ loginBtn.addEventListener('click', async (e) => {
     },
     body: JSON.stringify({ username, password }),
   });
-
-  if (res.status === 301) {
-    window.location.href = res.url;
-  } else {
-    alert('Login failed');
-  }
 });
