@@ -1,8 +1,8 @@
 export async function onRequestPost() {
   return new Response(null, {
+    status: 301,
     headers: {
-      'Content-Type': 'text/html',
-      'Access-Control-Allow-Origin': '*',
+      Location: '/',
     },
   });
 }
