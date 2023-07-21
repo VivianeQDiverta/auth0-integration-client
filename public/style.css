@@ -26,3 +26,7 @@ td,
 th {
   padding: 4px;
 }
+
+hr {
+  width: 100%;
+}
