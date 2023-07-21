@@ -5,17 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Auth0 integration demo</title>
+    <link rel="stylesheet" href="/public/style.css" />
   </head>
   <body>
-    <ul>
-      <li><a href="/auth/login">Login using Authorization Code Flow</a></li>
-      <li><a href="/login">Login using Resource Owner Password</a></li>
-      <li><a href="/auth/logout">Log out</a></li>
-      <li><a href="/api/v1/">API v1</a></li>
-      <li><a href="/products">View all products</a></li>
-      <li><a href="/products/1">View product 1</a></li>
-      <li><a href="/products/1/edit">Edit product 1</a></li>
-      <li><a href="/unknown">Unknown page</a></li>
-    </ul>
+    <div>
+      <h3>Presentation</h3>
+      <p>
+        This is a demo of an Auth0 integration using their API, KurocoEdge and a
+        Cloudflare Worker. It is an implementation of the
+        <a
+          href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow"
+          >Authorization Code Flow</a
+        >
+        and a showcase how page protection and back-end API access can be
+        handled using the permissions set in Auth0.
+      </p>
+      <p>
+        All accessible pages are presented here for the purpose of the showcase.
+        Of course, in real application settings, pages unaccessible to the user
+        would not have any link displayed for.
+      </p>
+      <p>There are 4 types paths:</p>
+      <ul>
+        <li>Public pages that are accessible without login</li>
+        <li>
+          Protected pages that are accessible only if the user is logged in and
+          has a certain permission
+        </li>
+        <li>
+          Non-existing pages that will result in 404 - Not Found whether the
+          user is logged in or not
+        </li>
+        <li>
+          API paths that would be used it the front-end needs data from an API
+          back-end
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Public pages</h3>
+      <ul>
+        <li><a href="/auth/login">Login using Authorization Code Flow</a></li>
+        <li><a href="/login">Login using Resource Owner Password</a></li>
+        <li><a href="/auth/logout">Log out</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Protected pages</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Permission</th>
+            <th>Page/Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>front:products</td>
+            <td><a href="/products">View all products</a></td>
+          </tr>
+          <tr>
+            <td>front:products:id</td>
+            <td><a href="/products/1">View product 1</a></td>
+          </tr>
+          <tr>
+            <td>front:products:id:edit</td>
+            <td><a href="/products/1">Edit product 1</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Non-existing page</h3>
+      <ul>
+        <li><a href="/unknown">Unknown page</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>API access</h3>
+      <p>
+        No specific permission needed but the Auth0 jwt payload must be in the
+        kuroco_edge_jwt. The idea is that for specific path like GET
+        /api/v1/products, the permission products:getAll has to be set.
+      </p>
+      <p>
+        For now, all call to an /api/v1/* endpoints will display the HTTP
+        method, the full path of the request and the user's permissions.
+      </p>
+      <ul>
+        <li><a href="/api/v1/">API v1</a></li>
+      </ul>
+    </div>
   </body>
 </html>
