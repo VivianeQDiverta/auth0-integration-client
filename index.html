@@ -23,13 +23,13 @@
           href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow"
           >Authorization Code Flow</a
         >
-        and a showcase how page protection and back-end API access can be
+        and a showcase of how page protection and back-end API access can be
         handled using the permissions set in Auth0.
       </p>
       <p>
-        All accessible pages are presented here for the purpose of showcasing
-        permissions. Of course, for a real application, pages unaccessible to the
-        user would not have any link displayed for.
+        All the existing pages are presented here in order to show how
+        permissions are used. Of course, for a real application, pages
+        unaccessible to the user would not have any link displayed for.
       </p>
       <p>There are 4 types of path:</p>
       <ul>
@@ -91,9 +91,9 @@
     <div>
       <h3>API access</h3>
       <p>
-        No specific permission needed but the Auth0 jwt payload must be in the
+        No specific permission needed but the Auth0 JWT payload must be in the
         kuroco_edge_jwt. The idea is that for specific endpoints like GET
-        /api/v1/products, the permission products:getAll has to be set.
+        /api/v1/products, a permission like products:getAll has to be set.
       </p>
       <p>
         For now, any call to an /api/v1/* endpoint will display the HTTP method
